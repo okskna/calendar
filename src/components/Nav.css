@@ -64,3 +64,50 @@ nav {
     display: none;
   }
 }
+
+.sidebar {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 100%;
+  width: 200px;
+  height: 100vh;
+  list-style: none;
+  font-size: 20px;
+  background-color: #282c34;
+
+  flex-direction: column;
+  justify-content: center;
+
+  transition: 850ms;
+}
+
+.sidebar.active {
+  left: calc(100% - 200px);
+  transition: 350ms;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.sidebar-item {
+  margin: 30px 0px;
+}
+
+.sidebar-text {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sidebar-close-ico {
+  text-decoration: none;
+  color: white;
+}

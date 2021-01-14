@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Nav from './components/Nav';
@@ -11,7 +12,33 @@ import Portfolio from './pages/Portfolio';
 
 import './App.css';
 
+import aboutRaw from './pages/About.md';
+
 function App() {
+  const [markdownText, setMarkdownText] = useState(null);
+  const readFile = (rawFile, isLoaded, setText) => {
+    if (!isLoaded) {
+      fetch(rawFile)
+      .then(r => r.text())
+      .then(text => {
+        console.log('text decoded:', text);
+        setText(text);
+      });
+    }
+  }
+
+  const loadAboutMdFile = () => {
+    readFile(aboutRaw, markdownText, setMarkdownText);
+  }
+
+  const loadPostsMdFiles = () => {
+    let posts = [];
+  }
+
+  loadAboutMdFile();
+  loadPostsMdFiles();
+
+
   return (
     <Router>
       <div className="App">
@@ -25,7 +52,7 @@ function App() {
                 <Home />
               </Route>
               <Route path="/about">
-                <About />
+                <About text={markdownText}/>
               </Route>
               <Route path="/algo">
                 <Algo />

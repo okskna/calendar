@@ -7,11 +7,14 @@
 .home-github-commit-graph {
   margin: 16px 8px;
   max-width: 100%;
+  text-decoration: none;
+  color: black;
 }
 
-.home-github-icon {
-  position: absolute;
-}
+/* .home-github-icon {
+  position: flex;
+  border: 1px solid black;
+} */
 
 .home-latest-posts {
   display: flex;

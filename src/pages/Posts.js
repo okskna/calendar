@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ReactMarkdown from 'react-markdown';
 
 function Posts () {
+  const [postsText, setPostText] = useState(null);
+
   return (
     <>
-      Posts
+      <ReactMarkdown className="About-paragraph" >
+        {`test`}
+      </ReactMarkdown>
     </>
   );
 }

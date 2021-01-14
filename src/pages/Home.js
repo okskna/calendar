@@ -1,20 +1,26 @@
 import React from 'react';
 import GitHubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
-import {AiFillGithub} from 'react-icons/ai';
+
 import './Home.css';
+
+import {constants} from '../constants/constants'
 
 
 function Home () {  
   return (
     <>
       <div className="home">
-        <div className="home-github-commit-graph">
-          <AiFillGithub className="home-github-icon"/>
-          <GitHubCalendar username="okskna" blockSize={10} blockMargin={4} fontSize={12} >
+        {
+        constants ? 
+        <a className="home-github-commit-graph" href={`https://github.com/${constants.username}`} >
+          <GitHubCalendar username={constants.username} blockSize={10} blockMargin={4} fontSize={12} >
             <ReactTooltip delayShow={50} html />
           </GitHubCalendar>
-        </div>
+        </a> : 
+        `LALALA`
+        }
+        
         <div className="home-latest-posts">
           <span className="home-latest-posts-title">Latest Posts</span>
           <div className="home-latest-posts-item">

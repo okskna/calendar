@@ -121,7 +121,11 @@
 }
 
 .App-contents {
+  height: 80vh;
   border: 1px solid black;
+  padding: 3vh 8px;
+  display: flex;
+  justify-content: center;
   /* height: 100%; */
 }
 

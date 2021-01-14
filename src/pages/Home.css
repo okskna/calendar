@@ -9,6 +9,10 @@
   max-width: 100%;
 }
 
+.home-github-icon {
+  position: absolute;
+}
+
 .home-latest-posts {
   display: flex;
   flex-direction: column;

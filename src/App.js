@@ -41,9 +41,9 @@ function App() {
               </Route>
             </Switch>
           </div>
-          <footer className="App-footer">
+          {/* <footer className="App-footer">
             This is footer!
-          </footer>
+          </footer> */}
           
         </div>
       </div>

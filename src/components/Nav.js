@@ -11,7 +11,7 @@ import './Nav.css';
 
 function Nav() {
   const [sidebarToggle, setSidebarToggle] = useState(false);
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateSize() {
       setSidebarToggle(false);
     }
@@ -37,7 +37,7 @@ function Nav() {
           </li>
           {NavData.map((item, idx) => {
             return (
-              <li>
+              <li key={`nav-item-${idx}`}>
                 <Link to={item.path} className={item.cName}>
                   {item.title}
                 </Link>
@@ -55,7 +55,7 @@ function Nav() {
           </li>
           {NavData.map((item, idx) => {
             return (
-              <li className='sidebar-item'>
+              <li className='sidebar-item' key={`sidebar-item-${idx}`}>
                 <Link to={item.path} className='sidebar-text' onClick={() => setSidebarToggle(false)}>
                   {item.title}
                 </Link>

@@ -1,22 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import './About.css';
 
-
-
-
 function About (props) {
-  // const [markdownText, setMarkdownText] = useState(null);
-  // console.log("markdownText: ", markdownText);
-  // if (!markdownText) {
-  //   fetch(raw)
-  //   .then(r => r.text())
-  //   .then(text => {
-  //     console.log('text decoded:', text);
-  //     setMarkdownText(text);
-  //   });
-  // }
-  console.log(props);
   return (
     <>
       <div className="About">

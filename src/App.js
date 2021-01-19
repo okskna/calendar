@@ -19,17 +19,13 @@ import fileListRaw from './tools/fileList.txt'
 // import * as fs from 'fs';
 
 function App() {
-  const [markdownText, setMarkdownText] = useState(null);
-  const [fileListText, setFileListText] = useState(null);
-  // useEffect(() => {
-    
-  // })
   const readFile = (rawFile, isLoaded, setText) => {
     if (!isLoaded) {
       fetch(rawFile)
       .then(r => r.text())
       .then(text => {
         setText(text);
+        console.log(text);
       });
     }
   }
@@ -38,29 +34,64 @@ function App() {
     readFile(aboutRaw, markdownText, setMarkdownText);
   }
 
-  const loadPostsMdFiles = () => {
-    let posts = [];
+  const loadPostsMdFileList = () => {
     readFile(fileListRaw, fileListText, setFileListText);
+  }
+
+  const loadPostsMdFiles = () => {
     if (!!fileListText) {
       const fileArray = fileListText.split(' ');
-      fileArray.forEach(file => {
-        console.log("file: ", `./_posts/${file}`);
-        import(`./_posts/${file}`)
-        .then(raw => {
-          console.log(raw.default);
-          fetch(raw.default)
-          .then(raw => raw.text())
-          .then(text => console.log("Text: ", text))
-        }).catch(console.log);
+      fileArray[fileArray.length - 1] = fileArray[fileArray.length - 1].slice(0, -1); // fileList.txt EOF(?) 삭제
+      console.log(fileArray);
+      
+      const files = fileArray.map(file => {
+        console.log("1. Get file path and import: ", `./_posts/${file}`);
+        return import(`./_posts/${file}`);
       });
+
+      let ret = Promise.all(files);
+      ret
+      .then(moduleList => {
+        console.log("2. moduleList: ", moduleList);
+        return Promise.all(moduleList.map(module => {
+          return fetch(module.default)
+          .then(raw => raw.text())
+          // .then(text => )
+        }))
+      })
+      .then(textList => {
+        console.log("4. textList: ", textList);
+        let postsCopy = Object.assign({}, posts);
+        textList.forEach((text, idx) => {
+          postsCopy[fileArray[idx]] = text;
+        })
+        console.log("5. posts ", postsCopy);
+        setPosts(postsCopy);
+      })
+      .catch(err => console.log("err: ", err));
     }
   }
 
-  loadAboutMdFile();
-  loadPostsMdFiles();
+  const [markdownText, setMarkdownText] = useState(null);
+  useEffect(() => {
+    loadAboutMdFile();
+  }, []);
 
-  // console.log("fs: ", fs);
-  // console.log("fileListText: ", fileListText);
+  const [fileListText, setFileListText] = useState(null);
+  useEffect(() => {
+    loadPostsMdFileList();
+  }, []);
+
+  const [posts, setPosts] = useState({});
+  useEffect(() => {
+    if (!!fileListText)
+      loadPostsMdFiles();
+  }, [fileListText]);
+  
+  useEffect(() => {
+    console.log("Posts update: ", posts);
+  }, [posts]);
+  
   return (
     <Router>
       <div className="App">
@@ -80,7 +111,7 @@ function App() {
                 <Algo />
               </Route>
               <Route path="/posts">
-                <Posts />
+                <Posts posts={posts}/>
               </Route>
               <Route path="/archive">
                 <Archive />

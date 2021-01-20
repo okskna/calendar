@@ -1,28 +1,24 @@
-import React, {useState} from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, {useState, useEffect} from 'react';
+
+import PostList from '../components/PostList';
+import SideMenu from '../components/SideMenu';
 
 import './Posts.css';
 
 function Posts (props) {
   const posts = props.posts;
 
+  // const titles = posts.
+
+  useEffect(() => {
+
+  }, [props]);
+
   return (
     <>
       <div className="Posts">
-        {
-          Object.entries(posts).map((titleContent, idx) => {
-            return (
-              <div className={`Posts-post ${idx}`}>
-                <div className="Posts-post-title">
-                  {titleContent[0]}
-                </div>
-                {/* <ReactMarkdown className="Posts-paragraph" >
-                  {titleContent[1]}
-                </ReactMarkdown> */}
-              </div>
-            )
-          })
-        }
+        <PostList posts={posts}/>
+        {/* <SideMenu titles={}/> */}
       </div>
     </>
   );

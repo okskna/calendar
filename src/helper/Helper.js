@@ -1,4 +1,15 @@
 export const Helper = {
+  fetchFile: (rawFile, text, setText) => {
+    if (!text) {
+      fetch(rawFile)
+      .then(r => r.text())
+      .then(text => {
+        setText(text);
+        // console.log(text);
+      });
+    }
+  },
+
   deepcopy: (arr) => {
     let copy = [];
     arr.forEach(item => {
@@ -18,7 +29,7 @@ export const Helper = {
     let copy = {};
     Object.entries(obj).forEach(item => {
       const [key, value] = item;
-      console.log("item: ", key, value);
+      // console.log("item: ", key, value);
       if (value.constructor == Object) {
         copy[key] = Helper.deepcopyObject(value);
       } else if (Array.isArray(value)) {

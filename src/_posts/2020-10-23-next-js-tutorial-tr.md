@@ -1,6 +1,6 @@
 ---
-title: [Next js] tutorial 1
-date: 2020-10-27 12:03:00 +0900
+title: "[Next.js] tutorial: Navigate Between Pages"
+date: 2020-10-28 18:02:00 +0900
 categories: Next.js
 ---
 

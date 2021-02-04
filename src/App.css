@@ -4,8 +4,8 @@
   font-size: 28px;
   display: flex;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 /*
@@ -121,7 +121,7 @@
 }
 
 .App-contents {
-  height: 80vh;
+  height: auto;
   border: 1px solid #e5e6e6;
   padding: 3vh 0;
   display: flex;

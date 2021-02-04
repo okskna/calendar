@@ -2,7 +2,7 @@ import React from 'react';
 
 import './SideMenu.css';
 
-function SideMenu () {
+function SideMenu (props) {
   return (
     <div className="Posts-sidemenu">
       Side Menu

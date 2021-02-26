@@ -1,0 +1,2 @@
+(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[19],{508:function(a,p,s){"use strict";s.r(p),p.default=s.p+"static/media/2-5-1coordinates.abcf11fa.JPG"}}]);
+//# sourceMappingURL=19.0d3ee0e1.chunk.js.map

@@ -1,0 +1,2 @@
+(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[9],{498:function(t,a,p){"use strict";p.r(a),a.default=p.p+"static/media/2020-10-23-next-js-tutorial-tr.a4a1b0ca.md"}}]);
+//# sourceMappingURL=9.110bb325.chunk.js.map

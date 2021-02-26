@@ -11,15 +11,16 @@ function Home () {
   return (
     <>
       <div className="home">
-        {
+        <GitHubCalendar username="okskna" />
+        {/* {
         constants ? 
         <a className="home-github-commit-graph" href={`https://github.com/${constants.username}`} >
           <GitHubCalendar username={constants.username} blockSize={10} blockMargin={4} fontSize={12} >
             <ReactTooltip delayShow={50} html />
           </GitHubCalendar>
         </a> : 
-        `LALALA`
-        }
+        `User data is undefined.`
+        } */}
         
         <div className="home-latest-posts">
           <span className="home-latest-posts-title">Latest Posts</span>

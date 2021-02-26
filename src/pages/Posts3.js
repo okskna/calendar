@@ -4,6 +4,16 @@ import useEventListener from './useEventListener';
 
 import PostList from '../components/PostList';
 import SideMenu from '../components/SideMenu';
+import Post from './Post';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
 
 // file import 
 import fileListRaw from '../tools/fileList.txt'
@@ -153,15 +163,30 @@ function Posts (props) {
     }
   }, [isBottom]);
 
+  const { path, url } = useRouteMatch();
+
+  const [selPost, setSelPost] = useState(null);
+  useEffect(() => {
+    console.log(selPost);
+  }, [selPost]);
+
   return (
     <>
-      <div className="Posts">
-        <PostList postList={posts}/>
+    <Switch>
+      <Route exact path={`${path}`}>
+        <PostList postList={posts} setSelPost={setSelPost} />
+      </Route>
+      <Route path={`${path}/:topicId`}>
+        <Post post={posts.filter(post => post.title === selPost)[0]} />
+      </Route>
+    </Switch>
+      {/* <div className="Posts"> */}
+        {/* <PostList postList={posts}/> */}
         {/* <SideMenu categories={categoryList}/> */}
-      </div>
-      <div className="Post">
+      {/* </div> */}
+      {/* <div className="Post">
         Hidden
-      </div>
+      </div> */}
     </>
   );
 }

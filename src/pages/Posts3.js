@@ -63,7 +63,7 @@ function Posts (props) {
     const fileImportPromiseList = fileTitleList.map(fileTitle => {
       var loc = window.location.pathname;
       var dir = loc.substring(0, loc.lastIndexOf('/'));
-      console.log("dir: ", process.cwd());
+      console.log("dir: ", process.env.PUBLIC_URL);
       return import(`../_posts/${fileTitle}`);  // !fixme: path => constants
     });
 

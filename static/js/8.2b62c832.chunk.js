@@ -1,2 +1,0 @@
-(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[8],{497:function(e,p,t){"use strict";t.r(p),p.default=t.p+"static/media/2020-10-20-effective-js-item-6.eb2723c5.md"}}]);
-//# sourceMappingURL=8.2b62c832.chunk.js.map
